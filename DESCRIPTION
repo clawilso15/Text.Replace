@@ -1,0 +1,19 @@
+Package: Text.Replace
+Type: Package
+Title: Replace Text
+Version: 2020.0.1.0
+Date: 2020-01-13
+Author: person("Clayton", "Wilson", email = "clawilso15@gmail.com", role = c("aut","cre"))
+Maintainer: Clayton Wilson <clawilso15@gmail.com>
+Description: One paragraph description of what the package does
+             as one or more full sentences.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.3)
+LinkingTo: Rcpp,
+           BH (>= 1.58.0-1),
+           RcppEigen,
+           RcppNumerical
+Encoding: UTF-8
+RoxygenNote: 7.0.2
+Suggests: 
+    testthat
