@@ -68,6 +68,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// my_summary_Cpp
+Rcpp::List my_summary_Cpp(NumericVector vec_in);
+RcppExport SEXP _Text_Replace_my_summary_Cpp(SEXP vec_inSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type vec_in(vec_inSEXP);
+    rcpp_result_gen = Rcpp::wrap(my_summary_Cpp(vec_in));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcpp_hello_world
 List rcpp_hello_world();
 RcppExport SEXP _Text_Replace_rcpp_hello_world() {
@@ -84,6 +95,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_Text_Replace_pbeta4", (DL_FUNC) &_Text_Replace_pbeta4, 6},
     {"_Text_Replace_qbeta4", (DL_FUNC) &_Text_Replace_qbeta4, 5},
     {"_Text_Replace_rbeta4", (DL_FUNC) &_Text_Replace_rbeta4, 5},
+    {"_Text_Replace_my_summary_Cpp", (DL_FUNC) &_Text_Replace_my_summary_Cpp, 1},
     {"_Text_Replace_rcpp_hello_world", (DL_FUNC) &_Text_Replace_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };

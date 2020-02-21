@@ -68,6 +68,11 @@ rbeta4 <- function(n, min, max, shape1, shape2) {
     .Call(`_Text_Replace_rbeta4`, n, min, max, shape1, shape2)
 }
 
+#' @export
+my_summary_Cpp <- function(vec_in) {
+    .Call(`_Text_Replace_my_summary_Cpp`, vec_in)
+}
+
 rcpp_hello_world <- function() {
     .Call(`_Text_Replace_rcpp_hello_world`)
 }
