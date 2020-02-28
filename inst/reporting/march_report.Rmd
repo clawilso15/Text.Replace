@@ -14,22 +14,46 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Background
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Purpose of project is to extract insights from survey data where data exists is a columnar format
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Survey asks respondents about how to improve by identifying both positive and negative trends
 
-```{r cars}
-summary(cars)
+Assumption - respondents state what they would like to see more of and what they want to see less of
+
+Respondents want to see an increased trend of positives and a decreasing trend of negatives
+
+- It is assumed that respondents will use certain phrases to identify these desires for trends
+
+```{r}
+library(Text.Replace)
+
+# Example on the AFMC We Need Data
+# data set located on another machine due to permissions
+
+csv = file.choose()
+AFMC_corpus = Text.Replace::create_corpus(readr::read_csv(csv), "Comments")
+
+AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus, 
+                                     tolower = TRUE, 
+                                     stem = FALSE, 
+                                     select = NULL, 
+                                     remove = NULL, 
+                                     dictionary = NULL, 
+                                     thesaurus = NULL, 
+                                     groups = NULL,
+                                     ngrams = 5,
+                                     remove_punct = T)
 ```
 
-## Including Plots
+```{r, fig.width=10}
+AFMC_dfm_trim = quanteda::dfm_trim(AFMC_dfm, min_termfreq = 30)
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+# basic wordcloud
+quanteda::textplot_wordcloud(AFMC_dfm_trim)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+kwic(toks, pattern = phrase(multiword))
+```
