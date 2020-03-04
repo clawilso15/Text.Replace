@@ -6,7 +6,6 @@ Date: 2020-03-02
 Author: person("Clayton", "Wilson", email = "clawilso15@gmail.com", role = c("aut","cre"))
 Maintainer: Clayton Wilson <clawilso15@gmail.com>
 Description: This package imports and analyzes survey data with associated metadata.
-             
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.3)
 LinkingTo: Rcpp,

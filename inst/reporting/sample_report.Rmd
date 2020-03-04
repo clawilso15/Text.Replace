@@ -1,0 +1,53 @@
+---
+title: "sample_report"
+author: "Clayton Wilson"
+date: "3/4/2020"
+output: 
+  html_document:
+    df_print: "paged"
+    toc: true
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+
+```{r}
+library(Text.Replace)
+
+# Example on the Survey Data
+# data set located on another machine due to permissions
+dats = data(surveyData)
+survey_df = data.frame(dats)
+
+survey_corpus = Text.Replace::create_corpus(survey_df, "comments")
+
+survey_dfm = Text.Replace:::create_dfm(survey_corpus,
+                                     tolower = TRUE,
+                                     stem = FALSE,
+                                     select = NULL,
+                                     remove = NULL,
+                                     dictionary = NULL,
+                                     thesaurus = NULL,
+                                     groups = NULL,
+                                     ngrams = 1,
+                                     remove_punct = T)
+
+
+```
+
+```{r, fig.width=10, eval=FALSE}
+survey_dfm_trim = quanteda::dfm_trim(survey_dfm, min_termfreq = 10)
+
+# basic wordcloud
+quanteda::textplot_wordcloud(survey_dfm_trim)
+```
+
+```{r, eval=FALSE}
+kwic(toks, pattern = phrase(multiword))
+```
