@@ -19,9 +19,11 @@ create_corpus <- function(df, text_col) {
     
   if(!(text_col %in% colnames(df))) {
     
+    frame_headers = list(colnames(df))
+    
     #Need to fix column name output readability
     stop('This function requires that the text_col be a data frame header.\n',
-         colnames(df))
+         frame_headers)
   }
     
   #Create a quanteda corpus from identified text column

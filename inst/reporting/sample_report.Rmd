@@ -19,13 +19,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(Text.Replace)
+library(rprojroot)
 
 # Example on the Survey Data
 # data set located on another machine due to permissions
-dats = data(surveyData)
-survey_df = data.frame(dats)
 
-survey_corpus = Text.Replace::create_corpus(survey_df, "comments")
+root <- find_root(is_rstudio_project)
+
+dest_All <- file.path(root, 'inst','extdata')
+
+sample_data <- paste(dest_All, 'surveyData_2.csv', sep = "/")
+
+survey_corpus = Text.Replace::create_corpus(readr::read_csv(sample_data), "comments")
 
 survey_dfm = Text.Replace:::create_dfm(survey_corpus,
                                      tolower = TRUE,
