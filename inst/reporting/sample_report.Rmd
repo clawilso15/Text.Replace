@@ -1,7 +1,7 @@
 ---
 title: "sample_report"
 author: "Clayton Wilson"
-date: "3/4/2020"
+date: "3/11/2020"
 output: 
   html_document:
     df_print: "paged"
@@ -46,13 +46,16 @@ survey_dfm = Text.Replace:::create_dfm(survey_corpus,
 
 ```
 
-```{r, fig.width=10, eval=FALSE}
+```{r, fig.width=10}
 survey_dfm_trim = quanteda::dfm_trim(survey_dfm, min_termfreq = 10)
 
 # basic wordcloud
 quanteda::textplot_wordcloud(survey_dfm_trim)
 ```
 
-```{r, eval=FALSE}
-kwic(toks, pattern = phrase(multiword))
+
+```{r}
+
+
+
 ```
