@@ -56,6 +56,6 @@ AFMC_dfm_trim = quanteda::dfm_trim(AFMC_dfm, min_termfreq = 30)
 quanteda::textplot_wordcloud(AFMC_dfm_trim)
 ```
 
-```{r}
+```{r, eval=FALSE}
 kwic(toks, pattern = phrase(multiword))
 ```
