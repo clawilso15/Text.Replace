@@ -4,7 +4,7 @@
 \alias{create_dfm}
 \title{Creates a Document Feature Matrix}
 \usage{
-create_dfm(obj, ...)
+create_dfm(obj, num_ngrams = 5, ...)
 }
 \description{
 Creates a Document Feature Matrix
