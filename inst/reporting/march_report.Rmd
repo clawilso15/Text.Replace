@@ -34,7 +34,9 @@ library(Text.Replace)
 
 csv = file.choose()
 AFMC_corpus = Text.Replace::create_corpus(readr::read_csv(csv), "Comments")
+```
 
+```{r}
 AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus, 
                                      tolower = TRUE, 
                                      stem = FALSE, 
