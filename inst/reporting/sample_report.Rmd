@@ -24,11 +24,17 @@ library(rprojroot)
 # Example on the Survey Data
 # data set located on another machine due to permissions
 
+# Locate sample data in package and load relative to project root
 root <- find_root(is_rstudio_project)
 
 dest_All <- file.path(root, 'inst','extdata')
 
 sample_data <- paste(dest_All, 'surveyData_2.csv', sep = "/")
+sample_questions <- paste(dest_All, 'surveyQuestions.csv', sep = "/")
+```
+
+```{r}
+survey_questions <- readr::read_csv(sample_questions)
 
 survey_corpus = Text.Replace::create_corpus(readr::read_csv(sample_data), "comments")
 
