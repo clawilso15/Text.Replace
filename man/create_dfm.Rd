@@ -6,6 +6,14 @@
 \usage{
 create_dfm(obj, num_ngrams = 5, ...)
 }
+\arguments{
+\item{obj}{A \code{quanteda::corpus}-class object}
+
+\item{num_ngrams}{Number of \code{quanteda::dfm}-class objects to create}
+}
+\value{
+A \code{list} of \code{quanteda::dfm}-class objects
+}
 \description{
-Creates a Document Feature Matrix
+Creates a \code{list} of \code{quanteda::dfm} based on
 }
