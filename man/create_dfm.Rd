@@ -15,5 +15,5 @@ create_dfm(obj, num_ngrams = 5, ...)
 A \code{list} of \code{quanteda::dfm} -class objects
 }
 \description{
-Creates a \code{list} of \code{quanteda::dfm} based on
+Creates a \code{list} of \code{quanteda::dfm} based on specified ngrams
 }

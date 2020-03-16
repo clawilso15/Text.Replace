@@ -1,6 +1,6 @@
 #' Creates a Document Feature Matrix
 #'
-#' @description Creates a \code{list} of \code{quanteda::dfm} based on 
+#' @description Creates a \code{list} of \code{quanteda::dfm} based on specified ngrams
 #'
 #' @importFrom quanteda dfm
 #' 
