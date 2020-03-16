@@ -7,7 +7,10 @@ Author: person("Clayton", "Wilson", email = "clawilso15@gmail.com", role = c("au
 Maintainer: Clayton Wilson <clawilso15@gmail.com>
 Description: This package imports and analyzes survey data with associated metadata.
 License: GPL (>= 2)
-Imports: Rcpp (>= 1.0.3)
+Imports: 
+    Rcpp (>= 1.0.3),
+    quanteda,
+    metricsgraphics
 LinkingTo: Rcpp,
            BH (>= 1.58.0-1),
            RcppEigen,
@@ -19,3 +22,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/clawilso15/Text.Replace
+BugReports: https://github.com/clawilso15/Text.Replace/issues
