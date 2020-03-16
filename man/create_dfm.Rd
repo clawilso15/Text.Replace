@@ -12,7 +12,7 @@ create_dfm(obj, num_ngrams = 5, ...)
 \item{num_ngrams}{Number of \code{quanteda::dfm}-class objects to create}
 }
 \value{
-A \code{list} of \code{quanteda::dfm}-class objects
+A \code{list} of \code{quanteda::dfm} -class objects
 }
 \description{
 Creates a \code{list} of \code{quanteda::dfm} based on

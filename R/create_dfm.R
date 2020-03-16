@@ -7,7 +7,7 @@
 #' @param obj A \code{quanteda::corpus}-class object
 #' @param num_ngrams Number of \code{quanteda::dfm}-class objects to create
 #' 
-#' @return A \code{list} of \code{quanteda::dfm}-class objects
+#' @return A \code{list} of \code{quanteda::dfm} -class objects
 #'
 #' @export
 create_dfm <- function(obj, num_ngrams = 5,...) {

@@ -13,7 +13,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Sample Survey Report
 
 
 
@@ -53,9 +53,9 @@ survey_dfm = Text.Replace:::create_dfm(survey_corpus,
 ```
 
 ```{r, fig.width=10}
-survey_dfm_trim = quanteda::dfm_trim(survey_dfm, min_termfreq = 10)
+survey_dfm_trim = quanteda::dfm_trim(survey_dfm[[1]], min_termfreq = 10)
 
-# basic wordcloud
+# basic wordcloud of ngrams = 1
 quanteda::textplot_wordcloud(survey_dfm_trim)
 ```
 
