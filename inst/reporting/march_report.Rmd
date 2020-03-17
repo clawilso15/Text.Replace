@@ -38,6 +38,7 @@ AFMC_corpus = Text.Replace::create_corpus(readr::read_csv(csv), "Comments")
 
 ```{r}
 AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus, 
+                                     num_ngrams = 2,
                                      tolower = TRUE, 
                                      stem = FALSE, 
                                      select = NULL, 
@@ -45,7 +46,6 @@ AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus,
                                      dictionary = NULL, 
                                      thesaurus = NULL, 
                                      groups = NULL,
-                                     ngrams = 5,
                                      remove_punct = T)
 ```
 
