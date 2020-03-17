@@ -1,19 +1,56 @@
---Review Categories--
+#####################
+# Review Categories #
+#####################
+
 - Accuracy
   - Are the results accurate?
+    # If the results are just to create a corpus and dfm from .csv data then the 
+      package appears to work just fine, given the correct inputs. However, it is unclear from
+      the documentation how the input data should be formatted.
   - Is it clear how the results were computed?
+    # Yes, the results are computed by running similar {quanteda} commands.
 
 - Compilation
   - Did the analytic work? (i.e. install correctly, startup correctly)
+    # The package installed correctly from GitHub and started up without any issues.
+      The sample commands do not work unless the entire repo is forked because the 
+      sample data files do not lie in a data directory reachable from within the 
+      package. I would recommend using the usethis() command to enter the sample data
+      into the backend that is available when the app loads.
   - Were errors encountered when executing code according to the documentation?
+    # devtools::test() had one test failure for the createCorpus command could not
+      find function "find root". This is most likely because the function is an 
+      {rprojroot} function and {rprojroot} is not properly loaded into the environment.
+      On that note, not all users of the package will be working within a project, so 
+      using this type of absolute file pathing will inevitably cause issues. It is 
+      better to store all the required files and data in a package specific location
+      that is declared in the namespace.
 
 - Ease of use
   - Is it clear how to use the analytic? (i.e. is the documentation clear)
+    # After creating a project on my local machine and pulling in the repo, I was able
+      to run the sample scripts. It seems like create_corpus() is doing little more than
+      quanteda::corpus(). The function worked but I the benefit of it isn't clearly 
+      explained. There is little documentation to support when or why a user would use
+      this package. I'm afraid that create_dfm() suffers from the same short comings.
   - Are the visualizations/plots interpretable?
-  
-  
-  
---Rubric--
+    # The outputs are a corpus and a document frequency matrix. The package requires
+      the user to use other packages for text analysis and visualization.
+
+##############
+# Assessment #
+##############
+
+Based on the rubric below, I have to assess this package as Satisfactory for the following
+reasons:
+ - The proposed text analytic tasks were left incomplete
+ - The documentation did not give a user a clear idea of how to implement the package
+ - The provided sample report required data not available by simply installing the package
+
+##########
+# Rubric #
+##########
+
 - Outstanding – ready to publish/deploy (50 pts)
   - All proposal tasks completed
   - Documentation is thorough and clear
