@@ -50,7 +50,8 @@ AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus,
 ```
 
 ```{r, fig.width=10}
-AFMC_dfm_trim = quanteda::dfm_trim(AFMC_dfm, min_termfreq = 30)
+AFMC_dfm_trim = quanteda::dfm_trim(AFMC_dfm, 
+                                   min_termfreq = 30)
 
 # basic wordcloud
 quanteda::textplot_wordcloud(AFMC_dfm_trim)
@@ -58,4 +59,16 @@ quanteda::textplot_wordcloud(AFMC_dfm_trim)
 
 ```{r, eval=FALSE}
 kwic(toks, pattern = phrase(multiword))
+```
+
+```{r}
+  tidy_out1 %>%
+    top_n(10) %>%
+    ungroup() %>%
+    mutate(bigram = reorder(term, count)) %>%
+    ggplot(aes(bigram, count, fill = count)) +
+    geom_col(show.legend = FALSE) +
+    labs(y = "Mentions",
+         x = NULL) +
+    coord_flip()
 ```
