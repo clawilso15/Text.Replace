@@ -13,14 +13,18 @@
 create_dfm <- function(obj, num_ngrams = 5,...) {
   
   if(!quanteda::is.corpus(obj)){
-    stop('obj must be a quanteda::corpus class obj')
+    
+     stop('obj must be a quanteda::corpus class obj')
+    
   }
   
-  out = list()
+  out = vector(length = num_ngrams, mode = "list")
   
-  for(i in 1: num_ngrams){
+  for(i in 1:num_ngrams){
     
-    out[[i]] = quanteda::dfm(x = obj, ngrams = i, ...)
+    out[[i]] = quanteda::tokens(obj) %>% 
+               quanteda::tokens_ngrams(num_ngrams) %>% 
+               quanteda::dfm(...)
   }
   
   names(out) = paste('ngrams',1:num_ngrams, sep = '')
