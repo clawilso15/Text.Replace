@@ -4,14 +4,16 @@
 #' @param dfm A document feature matrix
 #' @param docvar A character string denoting and document variable within \code{dfm}
 #' @param ... Not currently used 
-#' @importFrom quanteda dfm_subset dfm_group dfm_tfidf
+#' @importFrom quanteda dfm_subset dfm_group dfm_tfidf docvars
 get_tfidf = function(dfm, docvar,...){
   
-  sub_dfm = dfm_subset(dfm, subset = !is.na(eval(parse(text = docvar))))
+  dv_num = which(names(quanteda::docvars(dfm)) %in% docvar)
   
-  grp_dfm = dfm_group(dfm_sub, groups = docvar)
+  sub_dfm = quanteda::dfm_subset(dfm, subset = dv_num)
   
-  tfidf_dfm = dfm_tfidf(grp_dfm)
+  grp_dfm = quanteda::dfm_group(sub_dfm, groups = docvar)
+  
+  tfidf_dfm = quanteda::dfm_tfidf(grp_dfm)
   
   return(tfidf_dfm)
   
