@@ -13,7 +13,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Sample Survey Report
 
 
 
@@ -39,6 +39,7 @@ survey_questions <- readr::read_csv(sample_questions)
 survey_corpus = Text.Replace::create_corpus(readr::read_csv(sample_data), "comments")
 
 survey_dfm = Text.Replace:::create_dfm(survey_corpus,
+                                     num_ngrams = 5,
                                      tolower = TRUE,
                                      stem = FALSE,
                                      select = NULL,
@@ -46,16 +47,15 @@ survey_dfm = Text.Replace:::create_dfm(survey_corpus,
                                      dictionary = NULL,
                                      thesaurus = NULL,
                                      groups = NULL,
-                                     ngrams = 1,
                                      remove_punct = T)
 
 
 ```
 
 ```{r, fig.width=10}
-survey_dfm_trim = quanteda::dfm_trim(survey_dfm, min_termfreq = 10)
+survey_dfm_trim = quanteda::dfm_trim(survey_dfm[[1]], min_termfreq = 10)
 
-# basic wordcloud
+# basic wordcloud of ngrams = 1
 quanteda::textplot_wordcloud(survey_dfm_trim)
 ```
 

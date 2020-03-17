@@ -1,0 +1,31 @@
+---
+title: "Text.Replace"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Text_Replace}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This package allows users to parse natural language through the use of
+
+
+```{r setup}
+library(Text.Replace)
+
+#Text.replace::create_corpus()
+
+```
+
+Initial data inprocessing
+
+Text.Replace provides wrappers for quanteda functions to simplify calls:
+
+\code{create_corpus} to import 
