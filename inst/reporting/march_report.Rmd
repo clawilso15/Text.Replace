@@ -10,8 +10,9 @@ output:
     toc_float: yes
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, eval=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+devtools::install_github("clawilso15/Text.Replace")
 ```
 
 ## Background
@@ -33,28 +34,43 @@ library(Text.Replace)
 # data set located on another machine due to permissions
 
 csv = file.choose()
-AFMC_corpus = Text.Replace::create_corpus(readr::read_csv(csv), "Comments")
+DATA = readr::read_csv(csv)
+AFMC_corpus = Text.Replace::create_corpus(DATA, "Comments")
 ```
 
 ```{r}
 AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus, 
-                                     num_ngrams = 2,
+                                     num_ngrams = 5,
+                                     remove_punct = T,
                                      tolower = TRUE, 
                                      stem = FALSE, 
                                      select = NULL, 
                                      remove = NULL, 
                                      dictionary = NULL, 
                                      thesaurus = NULL, 
-                                     groups = NULL,
-                                     remove_punct = T)
+                                     groups = NULL)
 ```
 
 ```{r, fig.width=10}
-AFMC_dfm_trim = quanteda::dfm_trim(AFMC_dfm, 
-                                   min_termfreq = 30)
+AFMC_dfm_Q1 = quanteda::dfm_subset(AFMC_dfm[[1]], subset = Question == 1)
 
+AFMC_dfm_trim = quanteda::dfm_trim(AFMC_dfm_Q1, 
+                                   min_termfreq = 80,
+                                   max_termfreq = 100)
+```
+
+```{r}
 # basic wordcloud
 quanteda::textplot_wordcloud(AFMC_dfm_trim)
+
+freq <- Matrix::colSums(AFMC_dfm_trim)
+word <- names(freq)
+freq <- unname(freq)
+ord <- order(freq, decreasing = T)
+word <- word[ord]
+freq <- freq[ord]
+
+df <- data.frame(term = word, frequency = freq) ; df
 ```
 
 ```{r, eval=FALSE}
