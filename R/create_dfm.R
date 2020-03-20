@@ -10,7 +10,7 @@
 #' @return A \code{list} of \code{quanteda::dfm} -class objects
 #'
 #' @export
-create_dfm <- function(obj, num_ngrams = 5,...) {
+create_dfm <- function(obj, num_ngrams = 5,remove_punct = T,...) {
   
   if(!quanteda::is.corpus(obj)){
     
