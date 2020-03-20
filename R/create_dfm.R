@@ -20,10 +20,10 @@ create_dfm <- function(obj, num_ngrams = 5,...) {
   
   out = vector(length = num_ngrams, mode = "list")
   
-  for(i in 1:num_ngrams){
+  for(i in 1:length(num_ngrams)){
     
-    out[[i]] = quanteda::tokens(obj) %>% 
-               quanteda::tokens_ngrams(num_ngrams) %>% 
+    out[[i]] = quanteda::tokens(obj, remove_punct = remove_punct) %>% 
+               quanteda::tokens_ngrams(num_ngrams[i]) %>% 
                quanteda::dfm(...)
   }
   
