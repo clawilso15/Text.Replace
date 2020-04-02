@@ -40,7 +40,7 @@ AFMC_corpus = Text.Replace::create_corpus(DATA, "Comments")
 
 ```{r}
 AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus, 
-                                     num_ngrams = 5,
+                                     num_ngrams = 6,
                                      remove_punct = T,
                                      tolower = TRUE, 
                                      stem = FALSE, 
@@ -55,8 +55,7 @@ AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus,
 AFMC_dfm_Q1 = quanteda::dfm_subset(AFMC_dfm[[1]], subset = Question == 1)
 
 AFMC_dfm_trim = quanteda::dfm_trim(AFMC_dfm_Q1, 
-                                   min_termfreq = 80,
-                                   max_termfreq = 100)
+                                   min_termfreq = 10)
 ```
 
 ```{r}
