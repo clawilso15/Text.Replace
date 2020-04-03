@@ -20,7 +20,7 @@
 #'                  for use when \code{file_path == 'pdf'}
 #' @param file_type Character string to specify the file type
 #'
-#' @example 
+#' @examples 
 #' \dontrun{
 #' 
 #' oper655_readme <- "https://raw.githubusercontent.com/AFIT-R/oper655_fa2019/master/README.md"
@@ -31,6 +31,7 @@
 #' }
 #'
 #' @return text data
+#' @export
 extract_text <-  function(file_path = NULL,
                           pdf_image = F,
                           file_type = NULL){
