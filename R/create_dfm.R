@@ -18,7 +18,7 @@ create_dfm <- function(obj, num_ngrams = 5,remove_punct = T,...) {
     
   }
   
-  out = vector(length = num_ngrams, mode = "list")
+  out = vector(length = length(num_ngrams), mode = "list")
   
   for(i in 1:length(num_ngrams)){
     
