@@ -123,6 +123,8 @@ AFMC_dfm6 = Text.Replace:::create_dfm(AFMC_corpus,
                                      groups = NULL)
 ```
 
+Focusing on the latter DFM object created above, we now want to ith these objects created, 
+
 ```{r, fig.width=10}
 AFMC_dfm_Q1 = quanteda::dfm_subset(AFMC_dfm[[1]], subset = Question == 1)
 
