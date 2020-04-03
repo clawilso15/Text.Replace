@@ -4,7 +4,7 @@
 \alias{create_dfm}
 \title{Creates a Document Feature Matrix}
 \usage{
-create_dfm(obj, num_ngrams = 5, ...)
+create_dfm(obj, num_ngrams = 5, remove_punct = T, ...)
 }
 \arguments{
 \item{obj}{A \code{quanteda::corpus}-class object}
