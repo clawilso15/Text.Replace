@@ -17,7 +17,7 @@ devtools::install_github("clawilso15/Text.Replace")
 
 ## Background
 
-Purpose of project is to extract insights from survey data where data exists is a columnar format
+The purpose of this project is to extract insights from survey data to discern the desires of those completing the survey where data exists is a columnar format
 
 Survey asks respondents about how to improve by identifying both positive and negative trends
 
