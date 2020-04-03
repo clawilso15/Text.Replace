@@ -67,27 +67,52 @@ With the package installed, our first step is to extract the text data from the 
 - PDF files
 - Images Files: PDF, PNG, TIF
 
-This function is used as shown below
+This function is used as shown below.  The output shows an interactive table containing the first 100 rows of the survey data.
 
 ```{r, eval=FALSE}
 csv = file.choose()
 DATA = Text.Replace::extract_text(csv)
+DT::datatable(head(DATA, 100))
 ```
 
 ```{r, echo=FALSE}
 csv = "C:\\Users\\Aubur\\github\\auburngrads\\afmc_we_need\\data\\AWNComment_Freels.csv"
-DATA = Text.Replace::extract_text(csv)
+DATA = Text.Replace:::extract_text(csv)
+DT::datatable(head(DATA, 100))
 ```
 
-## Example on the AFMC We Need Data
+With the text data extracted from the file, we now must convert `DATA` into one or more objects that facilitate further analyses.  The objects that we want are a corpus object and a document feature matrix (DFM).  The `Text.Replace` package contains the function `create_corpus()` to create a corpus object from an object containing raw text data.  As currently implemented, this function presumes that the data are stored in a row-column format where each row (aka review) is considered as a distinct document and each column is a feature of the document.  Therefore, this function requires the user to provide the raw data object as well as the name of the column in which the the actual text is stored. All of the other columns are treated as document variables (aka `docvars`). For the case of the AWN data the survey text obtained from each respondent is stored in the 'Comments' column.
 
-
+```{r}
 AFMC_corpus = Text.Replace::create_corpus(DATA, "Comments")
 ```
 
+Printing `AFMC_corpus` shows that the corpus object contains `r nrow(DATA)` documents and `r ncol(DATA)-1` different document variables that describe these documents. 
+
 ```{r}
-AFMC_dfm = Text.Replace:::create_dfm(AFMC_corpus, 
+AFMC_corpus
+```
+
+Next, we want to create a document feature matrix (DFM) from the corpus object. The DFM is the primary object that will be used to carry out our subsequent analyses.  The `Text.Replace` package contains the `create_dfm()` function to create the document feature matrix.  The code in the chunk below shows the arguments for this function. 
+
+```{r}
+AFMC_dfm1 = Text.Replace:::create_dfm(AFMC_corpus, 
                                      num_ngrams = 6,
+                                     remove_punct = T,
+                                     tolower = TRUE, 
+                                     stem = FALSE, 
+                                     select = NULL, 
+                                     remove = NULL, 
+                                     dictionary = NULL, 
+                                     thesaurus = NULL, 
+                                     groups = NULL)
+```
+
+It is important to note the form of the output object created by this function.  After reviewing prior work performed by AFMC analysts, we see that evaluating phrases of various lengths is important. Therefore, this function returns a list where the length of the list corresponds to the length of the `num_ngrams` object.  In the example above the function returned a list of length one that included only six-word phrases.  In the example code below, the function returns a list of length six wherein each element in the list contains phrases of length 1,2,...,6. Note that this function will take longer to evaluate.
+
+```{r}
+AFMC_dfm6 = Text.Replace:::create_dfm(AFMC_corpus, 
+                                     num_ngrams = 1:6,
                                      remove_punct = T,
                                      tolower = TRUE, 
                                      stem = FALSE, 
