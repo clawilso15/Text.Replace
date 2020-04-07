@@ -25,9 +25,11 @@ create_dfm <- function(obj, num_ngrams = 5,remove_punct = T,...) {
     out[[i]] = quanteda::tokens(obj, remove_punct = remove_punct) %>% 
                quanteda::tokens_ngrams(num_ngrams[i]) %>% 
                quanteda::dfm(...)
+    
   }
   
-  names(out) = paste('ngrams',1:num_ngrams, sep = '')
+  names(out) = paste('ngrams',1:length(num_ngrams), sep = '')
   
   return(out)
+  
 }
