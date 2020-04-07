@@ -1,8 +1,8 @@
 Package: Text.Replace
 Type: Package
 Title: Replace Text
-Version: 2020.0.1.0
-Date: 2020-03-02
+Version: 2020.04.04
+Date: 2020-04-04
 Author: person("Clayton", "Wilson", email = "clawilso15@gmail.com", role = c("aut","cre"))
 Maintainer: Clayton Wilson <clawilso15@gmail.com>
 Description: This package imports and analyzes survey data with associated metadata.
