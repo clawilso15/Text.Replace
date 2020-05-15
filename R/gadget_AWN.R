@@ -21,7 +21,7 @@
 #'   \item{data}{A \code{data.frame} containing the columns that were not removed}
 #'   \item{script}{A line of code that can be used to replicate cleaning performed in the gadget}
 #' 
-#' @examples \dontrun{clean_columns(mtcars)}
+#' @examples
 #' 
 #' @family shinygadgets
 #' @return A printed shiny app
