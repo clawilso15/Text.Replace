@@ -12,11 +12,12 @@
 #' @export
 create_dfm <- function(obj, num_ngrams = 5,remove_punct = T,...) {
   
-  if(!quanteda::is.corpus(obj)){
+  if(!quanteda::is.corpus(obj))
+    {
     
      stop('obj must be a quanteda::corpus class obj')
     
-  }
+    }
   
   out = vector(length = length(num_ngrams), mode = "list")
   

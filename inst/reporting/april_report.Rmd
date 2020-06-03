@@ -179,7 +179,7 @@ Next, we want to create a document feature matrix (DFM) from the corpus object. 
 
 ```{r, cache=TRUE}
 AFMC_dfm1 = Text.Replace:::create_dfm(AFMC_corpus, 
-                                     num_ngrams = 6,
+                                     num_ngrams = 1,
                                      remove_punct = T,
                                      tolower = TRUE, 
                                      stem = FALSE, 
@@ -341,7 +341,9 @@ DT::datatable(df2[1:100,])
 AFMC_dfm6_Q1_trim = quanteda::dfm_trim(AFMC_dfm6_Q1_2, 
                                        min_termfreq = 10,
                                        max_termfreq = 500)
+```
 
+```{r}
 quanteda::textplot_wordcloud(AFMC_dfm6_Q1_trim, max_words = 150)
 ```
 
@@ -388,7 +390,9 @@ DT::datatable(df3[1:100,])
 AFMC_dfm6_Q1_trim = quanteda::dfm_trim(AFMC_dfm6_Q1_3, 
                                        min_termfreq = 10,
                                        max_termfreq = 1000)
+```
 
+```{r}
 quanteda::textplot_wordcloud(AFMC_dfm6_Q1_trim, max_words = 100)
 ```
 
@@ -435,7 +439,9 @@ DT::datatable(df4[1:100,])
 AFMC_dfm6_Q1_trim = quanteda::dfm_trim(AFMC_dfm6_Q1_4, 
                                        min_termfreq = 10,
                                        max_termfreq = 1000)
+```
 
+```{r}
 quanteda::textplot_wordcloud(AFMC_dfm6_Q1_trim, max_words = 75)
 ```
 
@@ -459,7 +465,9 @@ DT::datatable(df5[1:100,])
 AFMC_dfm6_Q1_trim = quanteda::dfm_trim(AFMC_dfm6_Q1_5, 
                                        min_termfreq = 10,
                                        max_termfreq = 100)
+```
 
+```{r}
 quanteda::textplot_wordcloud(AFMC_dfm6_Q1_trim, max_words = 60)
 ```
 
@@ -483,7 +491,9 @@ DT::datatable(df6[1:100,])
 AFMC_dfm6_Q1_trim = quanteda::dfm_trim(AFMC_dfm6_Q1_6, 
                                        min_termfreq = 5,
                                        max_termfreq = 100)
+```
 
+```{r}
 quanteda::textplot_wordcloud(AFMC_dfm6_Q1_trim, max_words = 50)
 ```
 
