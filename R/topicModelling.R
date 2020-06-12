@@ -10,7 +10,7 @@ AFMC_dfm_Q1_FS_trim <- dfm(AFMC_corpus_Q1_FS,
                            remove = stopwords('en')) %>% 
   dfm_trim(min_termfreq = 0.95, 
            termfreq_type = "quantile", 
-           max_termfreq = 0.1, 
+           max_docfreq = 0.1, 
            docfreq_type = "prop")
 
 
