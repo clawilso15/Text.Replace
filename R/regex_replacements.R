@@ -1,5 +1,5 @@
 regex_replacements <- function(.data,
-                               .subset = Source == 'Field Survey' & Question == 1)
+                               .subset = Source == 'Field Survey' & Question == 1) {
 
   e <- substitute(.subset)
   r <- eval(e, obj, parent.frame())

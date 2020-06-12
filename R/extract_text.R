@@ -14,40 +14,40 @@
 #' @importFrom readxl read_excel
 #' @importFrom magrittr `%>%`
 #'
-#' @param file_path Character string containing the path to the file 
+#' @param .filepath Character string containing the path to the file 
 #'                  from which the text data is to be extracted
-#' @param pdf_image Boolean denoting if the file is an image, 
+#' @param .pdfimage Boolean denoting if the file is an image, 
 #'                  for use when \code{file_path == 'pdf'}
-#' @param file_type Character string to specify the file type
+#' @param .filetype Character string to specify the file type
 #'
 #' @examples 
 #' \dontrun{
 #' 
 #' oper655_readme <- "https://raw.githubusercontent.com/AFIT-R/oper655_fa2019/master/README.md"
 #' 
-#' Text = extract_text(oper655_readme,
-#'                     file_type = "txt")
+#' Text = extract_text(.filepath = oper655_readme,
+#'                     .filetype = "txt")
 #' 
 #' }
 #'
 #' @return text data
 #' @export
-extract_text <-  function(file_path = NULL,
-                          pdf_image = F,
-                          file_type = NULL){
+extract_text <-  function(.filepath = NULL,
+                          .pdfimage = F,
+                          .filetype = NULL){
   
-  if(is.null(file_type)) file_type <- tools::file_ext(file_path)
+  if(is.null(.filetype)) .filetype <- tools::file_ext(.filepath)
   
-  text_data <- switch(tolower(file_type),
-                      'pdf' = `if`(pdf_image,
-                                   tesseract::ocr(pdftools::pdf_convert(file_path, dpi = 600)),
-                                   pdftools::pdf_text(file_path)),
-                      'docx' = qdapTools::read_docx(file_path),
-                      'doc' = antiword::antiword(file_path),
-                      'txt' = readr::read_lines(file_path),
-                      'csv' = data.table::fread(file_path),
-                      'xls' =, 'xlsx' = readxl::read_excel(file_path),
-                      'tif' =, "png" = { magick::image_read(image_file) %>% 
+  text_data <- switch(tolower(.filetype),
+                      'pdf' = `if`(.pdfimage,
+                                   tesseract::ocr(pdftools::pdf_convert(.filepath, dpi = 600)),
+                                   pdftools::pdf_text(.filepath)),
+                      'docx' = qdapTools::read_docx(.filepath),
+                      'doc' = antiword::antiword(.filepath),
+                      'txt' = readr::read_lines(.filepath),
+                      'csv' = data.table::fread(.filepath),
+                      'xls' =, 'xlsx' = readxl::read_excel(.filepath),
+                      'tif' =, "png" = { magick::image_read(.filepath) %>% 
                                 magick::image_resize("2000")   %>%
                                 magick::image_convert(colorspace = 'gray') %>%
                                 magick::image_trim() %>%
