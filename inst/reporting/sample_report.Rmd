@@ -39,7 +39,7 @@ survey_questions <- readr::read_csv(sample_questions)
 survey_corpus = Text.Replace::create_corpus(readr::read_csv(sample_data), "comments")
 
 survey_dfm = Text.Replace:::create_dfm(survey_corpus,
-                                     num_ngrams = 5,
+                                     num_ngrams = 1:5,
                                      tolower = TRUE,
                                      stem = FALSE,
                                      select = NULL,
