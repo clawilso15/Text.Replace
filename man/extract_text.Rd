@@ -4,16 +4,16 @@
 \alias{extract_text}
 \title{Module to extract text data from various file types}
 \usage{
-extract_text(file_path = NULL, pdf_image = F, file_type = NULL)
+extract_text(.filepath = NULL, .pdfimage = F, .filetype = NULL)
 }
 \arguments{
-\item{file_path}{Character string containing the path to the file 
+\item{.filepath}{Character string containing the path to the file 
 from which the text data is to be extracted}
 
-\item{pdf_image}{Boolean denoting if the file is an image, 
+\item{.pdfimage}{Boolean denoting if the file is an image, 
 for use when \code{file_path == 'pdf'}}
 
-\item{file_type}{Character string to specify the file type}
+\item{.filetype}{Character string to specify the file type}
 }
 \value{
 text data
@@ -26,8 +26,8 @@ Takes in a file path and returns the text extracted from the document
 
 oper655_readme <- "https://raw.githubusercontent.com/AFIT-R/oper655_fa2019/master/README.md"
 
-Text = extract_text(oper655_readme,
-                    file_type = "txt")
+Text = extract_text(.filepath = oper655_readme,
+                    .filetype = "txt")
 
 }
 

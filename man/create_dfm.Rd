@@ -4,15 +4,19 @@
 \alias{create_dfm}
 \title{Creates a Document Feature Matrix}
 \usage{
-create_dfm(obj, num_ngrams = 5, remove_punct = T, ...)
+create_dfm(.corpus, .ngrams = 5, .remove_punct = T, ...)
 }
 \arguments{
-\item{obj}{A \code{quanteda::corpus}-class object}
+\item{.corpus}{A \code{quanteda::corpus}-class object}
 
-\item{num_ngrams}{Number of \code{quanteda::dfm}-class objects to create}
+\item{.ngrams}{Number of \code{quanteda::dfm}-class objects to create}
+
+\item{.remove_punct}{Boolean indicating if punctuation should be removed}
+
+\item{...}{Additional arguments passed on to \code{quanteda::dfm}}
 }
 \value{
-A \code{list} of \code{quanteda::dfm} -class objects
+A \code{list} of \code{quanteda::dfm}-class objects
 }
 \description{
 Creates a \code{list} of \code{quanteda::dfm} based on specified ngrams

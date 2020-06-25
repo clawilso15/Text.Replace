@@ -37,7 +37,6 @@ A printed shiny app
 Shiny gadget used to visually inspect columns in a data set and select columns to remove
 }
 \examples{
-\dontrun{clean_columns(mtcars)}
 
 }
 \concept{shinygadgets}

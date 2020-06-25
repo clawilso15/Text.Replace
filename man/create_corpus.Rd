@@ -4,12 +4,12 @@
 \alias{create_corpus}
 \title{Build a corpus object}
 \usage{
-create_corpus(df, text_col)
+create_corpus(.data, .column)
 }
 \arguments{
-\item{df}{A data frame containing header values and single comments column}
+\item{.data}{A data frame containing header values and single comments column}
 
-\item{text_col}{A \code{string} value identifying column with text to analyze}
+\item{.column}{A \code{string} value identifying column with text to analyze}
 }
 \value{
 A \code{quanteda} corpus object
