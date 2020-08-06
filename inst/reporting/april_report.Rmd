@@ -150,8 +150,8 @@ DT::datatable(head(DATA, 100))
 ```
 
 ```{r, echo=FALSE}
-#csv = "C:\\Users\\Aubur\\github\\auburngrads\\afmc_we_need\\data\\AWNComment_Freels.csv"
-csv = "E:/AFIT/Thesis/RawAWN_Data/AWNComment_Freels.csv"
+csv = "C:\\Users\\Aubur\\github\\auburngrads\\afmc_we_need\\data\\AWNComment_Freels.csv"
+#csv = "E:/AFIT/Thesis/RawAWN_Data/AWNComment_Freels.csv"
 DATA = Text.Replace:::extract_text(csv)
 DT::datatable(head(DATA, 100))
 ```
@@ -179,7 +179,7 @@ Next, we want to create a document feature matrix (DFM) from the corpus object. 
 
 ```{r, cache=TRUE}
 AFMC_dfm1 = Text.Replace:::create_dfm(AFMC_corpus, 
-                                     num_ngrams = 1,
+                                     .ngrams = 1,
                                      remove_punct = T,
                                      tolower = TRUE, 
                                      stem = FALSE, 
