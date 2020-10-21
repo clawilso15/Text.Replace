@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/clawilso15/Text.Replace.svg?branch=master)](https://travis-ci.com/clawilso15/Text.Replace)
 <!-- badges: end -->
 
 The goal of Text.Replace is to analyze survey data with metadat to
