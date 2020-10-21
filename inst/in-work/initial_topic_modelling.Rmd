@@ -107,7 +107,7 @@ To reduce some of the error, locating common phrases and acronyms to be consolid
 AFMC_token_Q1_FS = quanteda::tokens(AFMC_corpus_Q1_FS)
 
 ngram = 2
-min_count = 5
+min_count = 3
 
 phrases_2 = quanteda::tokens_select(AFMC_token_Q1_FS, 
                         pattern = "^[A-Z]", 
@@ -197,12 +197,62 @@ AFMC_dfm_Q1_FS_trim <- quanteda::dfm(AFMC_token_postDictionary,
                      docfreq_type = "prop")
 ```
 
+```{r, }
+
+
+uniqueTokens_Subset(AFMC_token_postDictionary, AFMC_token_postDictionary$Base)
+
+Tinker_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Tinker")
+
+Robins_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Robins")
+
+Hill_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Hill")
+
+JBSA_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "JBSA")
+
+WPAFB_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Wright Patterson")
+
+Edwards_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Edwards")
+
+Scott_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Scott")
+
+Kirtland_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Kirtland")
+
+Eglin_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Eglin")
+
+Hanscom_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Hanscom")
+
+Arnold_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Arnold")
+
+Gunter_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Gunter")
+
+Holloman_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "Holloman")
+
+Other_token_Q1_FS = quanteda::tokens_subset(AFMC_token_postDictionary, 
+                                             subset = Base == "")
+
+```
+
+
 #### Step 2: Fit STM
 
 ```{r}
 set.seed(100)
 
-n_topics = 10
+n_topics = 25
 
 AFMC_stm = stm::stm(AFMC_dfm_Q1_FS_trim,
                     K = n_topics,
@@ -232,6 +282,14 @@ AFMC_dtm_Q1_FS = textmineR::CreateDtm(doc_vec = AFMC_corpus_Q1_FS,
 AFMC_dtm_postDictionary = textmineR::CreateDtm(doc_vec = AFMC_token_postDictionary,
                                                doc_names = AFMC_token_postDictionary$docname,
                                                ngram_window = c(1,6))
+
+```
+
+```{r}
+
+Tinker_dtm_Q1_FS = textmineR::CreateDtm(doc_vec = Bases_corpus_Q1_FS$Tinker, 
+                                        doc_names = Bases_corpus_Q1_FS$Tinker$docname, 
+                                        ngram_window = c(1,6))
 
 ```
 
