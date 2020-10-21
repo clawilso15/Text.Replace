@@ -15,3 +15,19 @@
 #' }
 #' 
 "surveyData"
+
+#' @title Sample Survey Data
+#' @docType data
+#' 
+#' @description A \code{dataframe} contain survey results from 2016 and 2017 surveys
+#' in Austen,Texas that is for simple testing and running of examples
+#' 
+#' @source \url{https://data.world/cityofaustin/mf9f-kvkk}
+#' 
+#' @format A \code{dataframe} with 3,187 rows with 3 variables:
+#' \describe{
+#' \item{Year}{The survey year for each response}
+#' \item{Council.District}{The specific city district the comment is addressing}
+#' \item{Comment}{The survey response in free form text}
+#' }
+"austensurvey"
