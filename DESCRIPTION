@@ -1,8 +1,8 @@
 Package: Text.Replace
 Type: Package
-Title: Replace Text
-Version: 2020.04.04
-Date: 2020-04-04
+Title: Survey Responses Analysis
+Version: 2020.10.21
+Date: 2020-10-21
 Author: person("Clayton", "Wilson", email = "clawilso15@gmail.com", role = c("aut","cre"))
 Maintainer: Clayton Wilson <clawilso15@gmail.com>
 Description: This package imports and analyzes survey data with associated metadata.
@@ -17,7 +17,7 @@ LinkingTo: Rcpp,
            RcppEigen,
            RcppNumerical
 Encoding: UTF-8
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     knitr,
