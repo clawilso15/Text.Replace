@@ -1,3 +1,7 @@
+library(tidyverse)
+library(tidytext)
+
+
 csv = "C:\\Users\\Aubur\\github\\auburngrads\\afmc_we_need\\data\\AWNComment_Freels.csv"
 #csv = "E:/AFIT/Thesis/RawAWN_Data/AWNComment_Freels.csv"
 DATA = Text.Replace:::extract_text(csv)
@@ -17,15 +21,20 @@ text_tb
 btm_test <- text_tb %>%
         tidytext::unnest_tokens(word, text, token = 'words')
 
+# Remove stopwords using the "snowball" repository
+btm_test <- dplyr::anti_join(btm_test,
+                             by = "word",
+                             tidytext::get_stopwords(source ="snowball"))
+
 btm = BTM::BTM(btm_test,
-  k = 5,
+  k = 10,
   alpha = 10,
   beta = 0.1,
-  iter = 1000,
+  iter = 2000,
   window = 15,
-  background = !FALSE,
-  trace = !FALSE,
-  detailed = !FALSE
+  background = TRUE,
+  trace = 200,
+  detailed = TRUE
 )
 
 library(LDAvis)
