@@ -1,7 +1,6 @@
 library(tidyverse)
 library(tidytext)
 
-
 csv = "C:\\Users\\Aubur\\github\\auburngrads\\afmc_we_need\\data\\AWNComment_Freels.csv"
 #csv = "E:/AFIT/Thesis/RawAWN_Data/AWNComment_Freels.csv"
 DATA = Text.Replace:::extract_text(csv)
