@@ -21,7 +21,8 @@ RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 VignetteBuilder: knitr
 URL: https://github.com/clawilso15/Text.Replace
 BugReports: https://github.com/clawilso15/Text.Replace/issues

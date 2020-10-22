@@ -9,6 +9,8 @@
 status](https://travis-ci.com/clawilso15/Text.Replace.svg?branch=master)](https://travis-ci.com/clawilso15/Text.Replace)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/clawilso15/Text.Replace?branch=master&svg=true)](https://ci.appveyor.com/project/clawilso15/Text.Replace)
+[![Codecov test
+coverage](https://codecov.io/gh/clawilso15/Text.Replace/branch/master/graph/badge.svg)](https://codecov.io/gh/clawilso15/Text.Replace?branch=master)
 <!-- badges: end -->
 
 The goal of Text.Replace is to analyze survey data with metadat to

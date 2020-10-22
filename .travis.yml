@@ -8,4 +8,5 @@ os:
   - linux
   - osx
   
-
+after_success:
+  - Rscript -e 'covr::codecov(type = "all")'
