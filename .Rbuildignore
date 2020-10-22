@@ -4,3 +4,4 @@
 ^objs/*
 ^data-raw$
 ^\.travis\.yml$
+^appveyor\.yml$
