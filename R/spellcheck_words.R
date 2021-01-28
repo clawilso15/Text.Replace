@@ -3,13 +3,20 @@ library(stringi)
 library(hunspell)
 
 #' @title Spell Text Column
-#' 
-#' @description A function to spellcheck a column of text based on the _hunspell_ English dictionary.
+#'
+#' @description A function to spellcheck a column of text based on the
+#'   _hunspell_ English dictionary.
 #'
 #' @param df A \code{dataframe} with a text column to analyze
 #' @param text_col The column name with the text to spellcheck
-#' @param to_lower A \code{logical} statement to specific whether to analyze the words as passed or to convert to all lower case before analysis. The default is \code{FALSE} to analyze data as given.
-#' @param remove_all_caps A \code{logical} statement on whether to remove words that are all capital before analysis or not. The default is \code{TRUE} to remove all capital words assumine them to be a proper noun or acronym.
+#' @param to_lower A \code{logical} statement to specific whether to analyze the
+#'   words as passed or to convert to all lower case before analysis. The
+#'   default is \code{FALSE} to analyze data as given.
+#' @param remove_all_caps A \code{logical} statement on whether to remove words
+#'   that are all capital before analysis or not. The default is \code{TRUE} to
+#'   remove all capital words assumine them to be a proper noun or acronym.
+#' @param my_dict A \code{hunspell} dictionary object to evaluate the terms. 
+#'   The default is U.S. English dictionary.
 #'
 #' @return A \code{character vector} of misspelled words.
 #' @export
@@ -18,8 +25,15 @@ library(hunspell)
 #' \dontrun{
 #' data(austensurvey)
 #' flag_words <- spellcheck_words(austensurvey, "Comment")
+#' 
+#' my_terms <- c("Uber", "Lyft")
+#' 
+#' my_dictionary <- hunspell::dictionary(add_words = my_terms)
+#' 
+#' flag_words <- spellcheck_words(austensurvey, "Comment", my_dict = my_dictionary)
+#' 
 #' }
-spellcheck_words <- function(df, text_col, to_lower = FALSE, remove_all_caps = TRUE){
+spellcheck_words <- function(df, text_col, to_lower = FALSE, remove_all_caps = TRUE, my_dict = hunspell::dictionary()){
   
   tokens <- df %>% tidytext::unnest_tokens(output = word, 
                                     input = !! rlang::sym(text_col),
@@ -34,7 +48,7 @@ spellcheck_words <- function(df, text_col, to_lower = FALSE, remove_all_caps = T
     all.words <- all.words[!all.words %in% caps]
   }
   
-  flagged.words <- hunspell::hunspell(all.words)
+  flagged.words <- hunspell::hunspell(all.words, dict = my_dict)
   
   spellcheck_words <- unique(unlist(flagged.words))
 }

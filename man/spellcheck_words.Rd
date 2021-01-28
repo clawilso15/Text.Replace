@@ -4,26 +4,47 @@
 \alias{spellcheck_words}
 \title{Spell Text Column}
 \usage{
-spellcheck_words(df, text_col, to_lower = FALSE, remove_all_caps = TRUE)
+spellcheck_words(
+  df,
+  text_col,
+  to_lower = FALSE,
+  remove_all_caps = TRUE,
+  my_dict = hunspell::dictionary()
+)
 }
 \arguments{
 \item{df}{A \code{dataframe} with a text column to analyze}
 
 \item{text_col}{The column name with the text to spellcheck}
 
-\item{to_lower}{A \code{logical} statement to specific whether to analyze the words as passed or to convert to all lower case before analysis. The default is \code{FALSE} to analyze data as given.}
+\item{to_lower}{A \code{logical} statement to specific whether to analyze the
+words as passed or to convert to all lower case before analysis. The
+default is \code{FALSE} to analyze data as given.}
 
-\item{remove_all_caps}{A \code{logical} statement on whether to remove words that are all capital before analysis or not. The default is \code{TRUE} to remove all capital words assumine them to be a proper noun or acronym.}
+\item{remove_all_caps}{A \code{logical} statement on whether to remove words
+that are all capital before analysis or not. The default is \code{TRUE} to
+remove all capital words assumine them to be a proper noun or acronym.}
+
+\item{my_dict}{A \code{hunspell} dictionary object to evaluate the terms. 
+The default is U.S. English dictionary.}
 }
 \value{
 A \code{character vector} of misspelled words.
 }
 \description{
-A function to spellcheck a column of text based on the _hunspell_ English dictionary.
+A function to spellcheck a column of text based on the
+  _hunspell_ English dictionary.
 }
 \examples{
 \dontrun{
 data(austensurvey)
 flag_words <- spellcheck_words(austensurvey, "Comment")
+
+my_terms <- c("Uber", "Lyft")
+
+my_dictionary <- hunspell::dictionary(add_words = my_terms)
+
+flag_words <- spellcheck_words(austensurvey, "Comment", my_dict = my_dictionary)
+
 }
 }
