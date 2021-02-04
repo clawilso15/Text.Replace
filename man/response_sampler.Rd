@@ -14,7 +14,7 @@ response_sampler(df, text_col, n)
 \item{n}{The number of responses to sample}
 }
 \value{
-A vector of sampled comments for the supplied dataframe.
+A vector of sampled comments from the supplied dataframe.
 }
 \description{
 This

@@ -9,6 +9,7 @@
 #' @param .column A \code{string} value identifying column with text to analyze
 #' 
 #' @return A \code{quanteda} corpus object 
+#' 
 #' @export
 create_corpus <- function(.data, .column) {
   
